@@ -1,12 +1,26 @@
 # aosp-android-build-manual
 
-1. 소스코드 다운로드
+## 1. 소스코드 다운로드
 
-소스를 다운로드하는 대신 특정 기기의 공장 출고 시 이미지로 시작하려면 [기기 빌드 선택](https://source.android.com/docs/setup/build/running?hl=ko#selecting-device-build)을 참고하세요.
+우리가 연구에서 사용할 기기는 구글에서 레퍼런스 스마트폰으로 출시하고 있는 Pixel폰 입니다
 
-## Repo 클라이언트 초기화
+Pixel에서 실행 가능한 AOSP 코드가 오픈되어 있으며 이를 토대로 빌드 + 플래싱 하여 실행 가능합니다
 
-[Repo 런처를 설치](https://source.android.com/docs/setup/develop?hl=ko#installing-repo)한 후 Android 소스 저장소에 액세스하도록 클라이언트를 설정합니다.
+
+### Pre-requisite: 
+
+구글은 픽셀기기마다 고유한 코드네임을 가지고 있습니다. 다음링크에서 확인 가능합니다.  [기기 빌드 선택](https://source.android.com/docs/setup/build/running?hl=ko#selecting-device-build)을 참고하세요.
+
+후술하겠지만 AOSP 10 버전 부터는 *repo* 명령어가 *python3*와 호환되니 *python3*를 사용하는 것을 추천드립니다
+
+
+### Repo 명령어 설치
+
+다음 링크의 Install 항목에 따라 *repo* 명령어를 설치 바랍니다 [Repo 명령어 설치](https://gerrit.googlesource.com/git-repo/+/refs/heads/master/README.md#install)
+
+
+
+### 작업 디렉토리 초기화
 
 1.  
     
@@ -71,7 +85,7 @@
 
 초기화가 완료되면 작업 디렉터리에 저장소가 초기화되었다는 메시지가 표시됩니다. 이제 클라이언트 디렉터리에 매니페스트와 같은 파일이 보관되는 `.repo` 디렉터리가 포함됩니다.
 
-## Android 소스 트리 다운로드
+### Android 소스 트리 다운로드
 
 기본 매니페스트에 지정된 저장소에서 Android 소스 트리를 작업 디렉터리로 다운로드하려면 다음을 실행합니다.
 
