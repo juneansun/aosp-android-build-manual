@@ -1,10 +1,11 @@
 # aosp-android-build-manual
+AOSP 안드로이드 소스코드를 직접 빌드하여 픽셀 스마트폰에 플래싱 하는 방법을 가이드합니다
 
 ## 1. 소스코드 다운로드
 
-우리가 연구에서 사용할 기기는 구글에서 레퍼런스 스마트폰으로 출시하고 있는 Pixel폰 입니다
+우리가 연구에서 사용할 기기는 구글에서 레퍼런스 스마트폰으로 출시하고 있는 Pixel 시리즈 입니다
 
-Pixel에서 실행 가능한 AOSP 코드가 오픈되어 있으며 이를 토대로 빌드 + 플래싱 하여 실행 가능합니다
+Pixel의 경우 실행 가능한 AOSP 코드가 오픈되어 있으며 이를 토대로 빌드 + 플래싱 하여 실행 가능합니다
 
 
 ### Pre-requisite: 
@@ -44,11 +45,11 @@ Pixel에서 실행 가능한 AOSP 코드가 오픈되어 있으며 이를 토대
 
     다음 링크에서 브랜치명을 확인합니다 [소스 코드 태그 및 빌드](https://source.android.com/docs/setup/about/build-numbers?hl=ko#source-code-tags-and-builds)를 참고하세요.
 
-    예를 들어 Pixel 4의 경우 빌드가능한 브랜치 중 android-13.0.0_r31 라는 태그명을 가진 브랜치가 최신임 을 알 수 있습니다
+    예를 들어 Pixel 4 XL 의 경우 빌드가능한 브랜치 중 android-13.0.0_r31 라는 태그명을 가진 브랜치가 최신임 을 알 수 있습니다
 
     *마스터 이외의* 브랜치를 확인하려면 `-b` 옵션을 통해 지정합니다.
 
-    pixel 4 의 경우 아래와 같이 초기화 합니다    
+    pixel 4 XL의 경우 아래와 같이 초기화 합니다    
     
     ```
     repo init -u https://android.googlesource.com/platform/manifest -b android-13.0.0_r31
@@ -135,10 +136,10 @@ source build/envsetup.sh
 lunch aosp_{코드네임}-userdebug
 
 ```
-예를 들어, Pixel 4의 경우 본 가이드의 pre-requisite에서 확인했던 타겟 코드네임 flame을 확인하고 아래와 같이 실행해줍니다.
+예를 들어, Pixel 4 XL의 경우 본 가이드의 pre-requisite에서 확인했던 타겟 코드네임 coral을 확인하고 아래와 같이 실행해줍니다.
 
 ```
-lunch aosp_flame-userdebug
+lunch aosp_coral-userdebug
 
 ```
 
@@ -188,3 +189,30 @@ m
 - **`clean`** - `m clean`은 이 구성의 모든 출력 파일과 중간 파일을 삭제합니다. 이는 `rm -rf out/`과 동일한 기능을 합니다.
 
 `m`이 제공하는 다른 pseudotarget을 보려면 `m help`를 실행합니다.
+
+## 3. 플래시
+
+빌드가 완료되면 out/target/product/{타겟별 브랜치} 디렉토리로 들어가면 system.img 이미지를 포함해 빌드 산출물 파일이 위치해 있습니다
+
+### 디바이스 언락
+직접 빌드한 이미지로 부팅하려면 언락이 필요합니다
+다음 과정대로 디바이스를 언락합니다 [언락 매뉴얼](https://palpit.tistory.com/entry/%EA%B5%AC%EA%B8%80-%ED%94%BD%EC%85%80-4-XL-%EC%96%B8%EB%9D%BD%ED%95%98%EA%B8%B0Google-Pixel-4-XL-Unlock)
+
+### 부트로더 진입
+Pixel 기종의 경우 전원 버튼과 볼륨 + 버튼을 함께 15초간 누르면 부트로더 모드로 부팅됩니다
+
+### fastboot 명령어 설치
+ ```
+sudo apt get install fastboot
+```
+
+### 이미지 플래싱
+ out/target/product/{타겟별 브랜치} 디렉토리에 있는 산출이미지를 아래와 같이 플래싱합니다
+ ```
+fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
+fastboot reboot fastboot
+fastboot flash product product.img
+fastboot flash system system.img
+fastboot flash system_ext system_ext.img
+fastboot reboot
+```
