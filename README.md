@@ -40,21 +40,22 @@ Pixel에서 실행 가능한 AOSP 코드가 오픈되어 있으며 이를 토대
     
 3.              
     
-    `repo init`를 실행하여 최근 버그가 수정된 최신 버전의 Repo를 다운로드합니다. Android 소스에 포함된 다양한 저장소가 작업 디렉터리 내에 배치되는 위치를 지정하는 매니페스트의 URL을 지정해야 합니다.
+    `repo init`를 실행하여 repo 디렉토리를 초기화 합니다.
+
+    다음 링크에서 브랜치명을 확인합니다 [소스 코드 태그 및 빌드](https://source.android.com/docs/setup/about/build-numbers?hl=ko#source-code-tags-and-builds)를 참고하세요.
+
+    예를 들어 Pixel 4의 경우 빌드가능한 브랜치 중 android-13.0.0_r31 라는 태그명을 가진 브랜치가 최신임 을 알 수 있습니다
+
+    *마스터 이외의* 브랜치를 확인하려면 `-b` 옵션을 통해 지정합니다.
+
+    pixel 4 의 경우 아래와 같이 초기화 합니다    
     
     ```
-    repo init -u https://android.googlesource.com/platform/manifest
+    repo init -u https://android.googlesource.com/platform/manifest -b android-13.0.0_r31
     
     ```
     
-    다음으로 마스터 분기를 확인합니다.
     
-    ```
-    repo init -u https://android.googlesource.com/platform/manifest -b master
-    
-    ```
-    
-    *마스터 이외의* 브랜치를 확인하려면 `-b`로 지정합니다. 분기 목록은 [소스 코드 태그 및 빌드](https://source.android.com/docs/setup/about/build-numbers?hl=ko#source-code-tags-and-builds)를 참고하세요.
     
     ***Python 2의 경우***
     
