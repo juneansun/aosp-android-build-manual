@@ -2,9 +2,9 @@
 
 1. 소스코드 다운로드
 
-The Android source tree is located in a Git repository hosted by Google. The Git repository includes metadata for the Android source, including changes to the source and when the changes were made. This page describes how to download the source tree for a specific Android code line.
-
-To start with a factory image for a specific device instead of downloading the source, see [Selecting a device build](https://source.android.com/docs/setup/build/running#selecting-device-build).
+Prerequisite:
+ 구글은 각 픽셀기기 마다 고유한 코드네임을 가지고 있음
+ 빌드시에 사용이 필요하니 다음 링크에서 확인 바람[Selecting a device build](https://source.android.com/docs/setup/build/running#selecting-device-build).
 
 ## Initializing a Repo client
 
