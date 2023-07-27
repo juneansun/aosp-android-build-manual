@@ -2,7 +2,7 @@
 AOSP 안드로이드 소스코드를 직접 빌드하여 픽셀 스마트폰에 플래싱 하는 방법을 가이드합니다
 크게 3파트로 나눠져있습니다
 1. [소스 다운로드](https://github.com/juneansun/aosp-android-build-manual#1-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C)
-2. [소스 빌드](https://github.com/juneansun/aosp-android-build-manual/edit/main/README.md#2-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B9%8C%EB%93%9C)
+2. [소스 빌드](https://github.com/juneansun/aosp-android-build-manual/blob/main/README.md#2-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B9%8C%EB%93%9C)
 4. [산출물 플래싱](https://github.com/juneansun/aosp-android-build-manual/edit/main/README.md#3-%ED%94%8C%EB%9E%98%EC%8B%9C)
 ## 1. 소스코드 다운로드
 
